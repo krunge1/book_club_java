@@ -42,7 +42,7 @@
    		<form:textarea path="comments" rows="3" class="col"/>
    		</div>
    		<div class="mb-3 row">
- 		<form:input path="user.id" type="hidden" value="${user.id}"/>
+ 		<form:input path="user" type="hidden" value="${user.id}"/>
 	 	<button type="submit" class="btn btn-primary" value="submit_form">Submit</button>
 	 	</div>
     </form:form>
