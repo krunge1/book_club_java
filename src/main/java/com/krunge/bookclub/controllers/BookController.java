@@ -37,6 +37,7 @@ public class BookController {
 		if(userId==null) {
 			return "redirect:/";
 		}
+		model.addAttribute("user", userService.getByID(userId));
 		model.addAttribute("book", new Book());
 		return "newBook.jsp";
 	}
