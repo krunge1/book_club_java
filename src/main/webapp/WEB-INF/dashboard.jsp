@@ -38,12 +38,12 @@
 	   </tr>
 	  </thead>
 	  <tbody>
-    		<c:forEach var="usersWithBooks" items="${user.books}">
+    		<c:forEach var="book" items="${book}">
     		<tr>
-			<td>${books.id}</td>
-			<td>${books.authorName}</td>
-			<td>${books.comments}</td>
-			<td>${user.userName}</td>			
+			<td>${book.id}</td>
+			<td><a href="/books/${book.id}">${book.title}</a></td>
+			<td>${book.authorName}</td>
+			<td>${book.user.userName}</td>			
     		</tr>	
     		</c:forEach>		
 	  </tbody>

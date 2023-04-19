@@ -41,6 +41,22 @@ public class BookController {
 		model.addAttribute("book", new Book());
 		return "newBook.jsp";
 	}
+	
+	@GetMapping("/{id}")
+	public String rBook(
+			@PathVariable("id") Long bookId,
+			HttpSession session,
+			Model model
+			) {
+		//Tests if user is logged in. Returns to login page if not in session.
+		Long userId = (Long) session.getAttribute("userId");
+		if(userId==null) {
+			return "redirect:/";
+		}
+		model.addAttribute("book", bookService.getOne(bookId));
+		model.addAttribute("user", userService.getOne(userId));
+		return "viewBook.jsp";
+	}
 
 	@PostMapping("/create")
 	public String pNewBook(
@@ -49,12 +65,13 @@ public class BookController {
 			Model model,
 			HttpSession session
 			) {
-//		Long userId = (Long) session.getAttribute("userId");
-//		User user = userService.getOne(userId);
-//		model.addAttribute(user);
+		Long userId = (Long) session.getAttribute("userId");
+		User user = userService.getOne(userId);
+		model.addAttribute(user);
 		
 		//New Book form tests
 		if(result.hasErrors()) {
+			model.addAttribute("user", userService.getOne(userId));			
 			model.addAttribute("book", new Book());
 			return "newBook.jsp";
 		}

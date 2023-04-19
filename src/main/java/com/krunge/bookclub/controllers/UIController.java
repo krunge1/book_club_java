@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.krunge.bookclub.models.Book;
 import com.krunge.bookclub.models.LoginUser;
 import com.krunge.bookclub.models.User;
+import com.krunge.bookclub.services.BookService;
 import com.krunge.bookclub.services.UserService;
 
 
@@ -18,6 +20,8 @@ import com.krunge.bookclub.services.UserService;
 public class UIController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BookService bookService;
 	
 	@GetMapping("/")
 	public String rLoginReg (
@@ -41,9 +45,9 @@ public class UIController {
 			return "redirect:/";
 		}
 		User user = userService.getOne(userId);
-		List<User> usersWithBooks = userService.getAll();
+		List<Book> books = bookService.getAll();
 		model.addAttribute("user", user);
-		model.addAttribute("usersWithBooks", usersWithBooks);
+		model.addAttribute("book", books);
 		return "dashboard.jsp";
 	}
 	

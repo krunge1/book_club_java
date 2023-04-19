@@ -29,6 +29,10 @@
     padding: 2em;
 }
 
+.border{
+	border: 25px solid red;
+}
+
 .display_flex{
     display: flex;
     justify-content: space-around;
