@@ -38,7 +38,7 @@ public class BookController {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId==null) {
 			return "redirect:/";
-		}
+		}		
 		model.addAttribute("user", userService.getOne(userId));
 		model.addAttribute("book", new Book());
 		return "newBook.jsp";
@@ -100,9 +100,9 @@ public class BookController {
 		//New Book form tests
 		if(result.hasErrors()) {
 			model.addAttribute("user", userService.getOne(userId));			
-			model.addAttribute("book", new Book());
 			return "newBook.jsp";
 		}
+		
 		bookService.createOrUpdate(book);
 		return "redirect:/books";
 		
@@ -124,12 +124,12 @@ public class BookController {
 		//New Book form tests
 		if(result.hasErrors()) {
 			model.addAttribute("user", userService.getOne(userId));			
-			model.addAttribute("book", new Book());
-			return "newBook.jsp";
+			return "editBook.jsp";
 		}
 		bookService.createOrUpdate(book);
 		return "redirect:/books";
 	}	
+	
 	//Request method to delete a book
 	@RequestMapping("/{id}/delete")
 	
