@@ -61,7 +61,6 @@ public class Book {
     
 //Constructor
     public Book() {
-		super();
 	}
 
 //Getters and Setters

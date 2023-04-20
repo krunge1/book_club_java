@@ -26,7 +26,7 @@ public class BookService {
     }
     
 // Get Book by User Id
-	public List<Book> getByDojoId(Long userId) {
+	public List<Book> getByUserId(Long userId) {
 		return bookRepo.findAllByUser(userId);
 	}
 	

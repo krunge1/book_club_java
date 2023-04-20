@@ -29,7 +29,7 @@ public class UserController {
 			HttpSession session
 
 			) {
-	//Tests if module requirements are met and renders the login page if error
+	//Tests if model requirements are met and renders the login page if error
 		if (result.hasErrors()) {
 			model.addAttribute("loginUser", new LoginUser());
 			return "login.jsp";
